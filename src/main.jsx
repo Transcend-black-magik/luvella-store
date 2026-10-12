@@ -6,6 +6,8 @@ import './scroll.css';
 import './bag.css';
 import './shoes.css';
 import About from './About.jsx';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const asset='/images/fashion-model.png';
 function IconButton({label,children,...props}){return <button className="icon-button" aria-label={label} {...props}>{children}</button>}
@@ -95,4 +97,4 @@ function ShoeDialog({shoe,index,origin,onChange,close,onAdd}){
 }
 function navigatePage(path){history.pushState({},'',path);window.dispatchEvent(new PopStateEvent('popstate'));window.scrollTo(0,0)}
 function Site(){const[path,setPath]=useState(location.pathname);useEffect(()=>{const update=()=>setPath(location.pathname);window.addEventListener('popstate',update);return()=>window.removeEventListener('popstate',update)},[]);return path==='/about'?<About navigate={navigatePage}/>:<App/>}
-createRoot(document.getElementById('root')).render(<Site/>);
+createRoot(document.getElementById('root')).render(<><Site/><Analytics/><SpeedInsights/></>);
