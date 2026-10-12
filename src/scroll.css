@@ -1,0 +1,104 @@
+.scroll-story{height:400vh;height:400dvh;position:relative}.sticky-home{position:sticky;top:0}.scroll-dots{z-index:8;gap:0}.scroll-dots button{width:24px;height:25px;display:grid;place-items:start center}.scroll-dots i,.scroll-dots button:nth-child(n) i{width:12px;height:12px;background:#aaa;opacity:1;display:block;transition:background .25s}.scroll-dots button:nth-child(2) i{background:#777}.scroll-dots button:nth-child(4) i{background:#ddd}.scroll-dots button:nth-child(n) i.active{background:#000}.collection-scene{position:absolute;inset:0;background:#f0f0f2;animation:enter .45s ease-out;overflow:hidden}.navigation,.utilities{z-index:10}.rain-scene:after{content:'';position:absolute;left:0;right:0;bottom:0;height:10.4%;background:#d5dce0;z-index:0}.collection-copy{position:absolute;left:8%;top:27%;width:25%;z-index:2}.collection-kicker{font:600 clamp(12px,1.3cqw,20px) 'Barlow Condensed',sans-serif;letter-spacing:1.3px}.collection-copy h2{font:600 clamp(66px,8cqw,130px)/.98 'Barlow Condensed',sans-serif;letter-spacing:3px;margin:0 0 28px}.collection-copy p{font:11px/1.8 'Space Mono',monospace;letter-spacing:1px;max-width:310px}.collection-tag{display:block;font:11px 'Space Mono',monospace;letter-spacing:1px;margin:20px 0 30px}.details-link{display:flex;gap:10px;align-items:center;font-size:17px;letter-spacing:1px}.details-link span{border-radius:50%;background:#000;color:white;display:grid;place-items:center;width:28px;height:28px}.rain-art{position:absolute;left:34%;top:16%;height:84%;width:33%;overflow:hidden;z-index:1}.rain-art img{position:absolute;height:118%;width:auto;max-width:none;left:50%;top:-18%;transform:translateX(-50%)}.detail-art img{height:158%;top:-23%;left:50%}.collection-options{position:absolute;left:72%;top:32%;width:22%;z-index:3}.color-swatch{margin-top:8px}.color-swatch>span{display:block;width:35px;height:35px;background:#474d50;border-bottom:3px solid #000}.color-swatch p{font-size:12px;letter-spacing:1px;margin:5px 0 10px}.product-meta{border-top:1px solid #bfc0c0;border-bottom:1px solid #bfc0c0;padding:6px 0 10px;margin-bottom:20px}.product-meta p{font-size:13px;font-weight:600;letter-spacing:.8px}.collection-sizes{display:flex;gap:8px;margin:10px 0 16px}.collection-sizes button{border:1px solid #c4c4c4;min-width:36px;height:36px;font-size:17px}.collection-sizes .selected{background:#000;color:#fff;border-color:#000}.collection-actions{display:flex;align-items:center;gap:8px}.collection-actions .primary{font-size:12px;letter-spacing:1px;justify-content:center;min-height:38px;margin:0}.collection-actions>.icon-button{width:40px;height:38px;flex-shrink:0;background:#000;color:#fff}.slide-number{position:absolute;bottom:4%;left:8%;font:10px 'Space Mono',monospace;letter-spacing:2px;z-index:4}.campaign-art{position:absolute;left:32%;top:14%;height:78%;width:35%}.campaign-art>img{width:100%;height:100%;object-fit:contain}.winter-scene{background:#e8e7e1}.winter-scene .color-swatch>span{background:#b7a58b}.next-section{padding:100px 8%;min-height:70vh;background:#111;color:#f5f5f3}.next-section h2{font:500 clamp(50px,7vw,110px)/1 'Barlow Condensed',sans-serif;margin:25px 0}.next-section p{font:12px/1.8 'Space Mono',monospace}.next-section .shop-button{margin-top:25px;background:#f5f5f3;color:#111}.rain-panel img{width:100%;height:auto}
+@media(max-width:760px){.sticky-home.canvas{height:100dvh;min-height:0;padding:16px}.sticky-home .navigation{position:absolute;left:16px;right:16px;top:65px;margin:0;display:flex}.sticky-home .utilities{height:55px}.sticky-home .hero-art{top:25%;height:43%;left:16%;width:70%}.sticky-home .editorial{position:absolute;left:16px;bottom:18px;width:calc(100% - 32px);margin:0}.sticky-home .editorial .small-mark,.sticky-home .editorial .barcode,.sticky-home .copy-rule,.sticky-home .supporting,.sticky-home .annotation{display:none}.sticky-home .editorial h1{font-size:16px}.sticky-home .editorial p{font-size:9px;margin:10px 0}.sticky-home .shop-teaser{top:170px}.sticky-home .information p{top:135px}.sticky-home .sizes{top:36%;right:16px}.sticky-home .year{display:none}.scroll-dots{left:16px;top:32%}.scroll-dots button{height:26px;width:24px}.collection-copy{left:12%;top:16%;width:75%}.collection-kicker{font-size:12px}.collection-copy h2{font-size:54px;margin:3px 0 8px}.collection-copy p{font-size:9px;line-height:1.6;max-width:280px}.collection-tag{display:none}.details-link{font-size:12px}.details-link span{width:22px;height:22px}.rain-art{left:24%;top:37%;height:40%;width:57%}.rain-art img{height:120%;top:-20%}.detail-art img{height:155%;top:-20%}.collection-options{left:12%;top:auto;bottom:3%;width:80%}.collection-options>.collection-kicker,.color-swatch,.product-meta{display:none}.collection-sizes{margin:0 0 8px}.collection-sizes button{height:36px;min-width:42px}.collection-actions .primary{min-height:40px}.collection-actions>.icon-button{height:40px}.slide-number{left:auto;right:16px;bottom:22%}.campaign-art{top:37%;height:40%;width:66%;left:18%}.next-section{padding:65px 25px}.rain-scene:after{height:23%}}
+.rain-art:not(.detail-art){left:35.5%;width:30%}
+@media(max-width:760px){.rain-art:not(.detail-art){left:24%;width:57%}}
+@media(prefers-reduced-motion:reduce){.collection-scene{animation:none}}
+
+/* Two pinned screens. Each mounted screen replays its staggered entrances. */
+.scroll-story{height:200vh;height:200dvh}
+.persistent-header{display:contents}
+.sticky-home{--entrance-duration:750ms}
+.sticky-home .navigation{animation:from-left var(--entrance-duration) both}
+.sticky-home .navigation button{animation:from-top 650ms both;animation-delay:150ms}
+.sticky-home .navigation button:nth-child(2){animation-delay:220ms}
+.sticky-home .navigation button:nth-child(3){animation-delay:290ms}
+.sticky-home .utilities{animation:from-top var(--entrance-duration) both}
+.sticky-home .utilities button{animation:from-right 650ms both;animation-delay:180ms}
+.sticky-home .utilities button:nth-child(2){animation-delay:250ms}
+.sticky-home .utilities button:nth-child(3){animation-delay:320ms}
+.sticky-home .shop-teaser{animation:from-left 850ms 100ms both}
+.sticky-home .teaser-image{animation:from-top 700ms 180ms both}
+.sticky-home .vertical-shop{animation:from-bottom 700ms 220ms both}
+.sticky-home .round-arrow{animation:from-left 700ms 280ms both}
+.sticky-home .hero-art{animation:from-bottom 1000ms 80ms both}
+.sticky-home .annotation.left{animation:from-left 800ms 300ms both}
+.sticky-home .annotation.right{animation:from-right 800ms 350ms both}
+.sticky-home .annotation-label{animation:from-top 700ms 450ms both}
+.sticky-home .leader,.sticky-home .bracket-symbol{animation:from-bottom 800ms 380ms both}
+.sticky-home .information>svg{animation:from-top 750ms 100ms both}
+.sticky-home .statistics{animation:from-right 800ms 200ms both}
+.sticky-home .information p{animation:from-right 800ms 300ms both}
+.sticky-home .arrow-controls button{animation:from-top 750ms 350ms both}
+.sticky-home .sizes{animation:from-right 800ms 200ms both}
+.sticky-home .size-options button{animation:from-right 600ms 300ms both}
+.sticky-home .size-options button:nth-child(2){animation-delay:360ms}
+.sticky-home .size-options button:nth-child(3){animation-delay:420ms}
+.sticky-home .size-options button:nth-child(4){animation-delay:480ms}
+.sticky-home .year{animation:from-bottom 800ms 450ms both}
+.sticky-home .editorial .small-mark,.sticky-home .barcode{animation:from-left 750ms 200ms both}
+.sticky-home .editorial h1{animation:from-left 850ms 250ms both}
+.sticky-home .copy-rule{animation:from-right 750ms 300ms both}
+.sticky-home .editorial p{animation:from-bottom 800ms 350ms both}
+.sticky-home .shop-button{animation:from-bottom 800ms 450ms both}
+.sticky-home .feature-card{animation:from-bottom 850ms 200ms both}
+.sticky-home .feature-card li{animation:from-left 700ms 400ms both}
+.sticky-home .feature-footer{animation:from-bottom 750ms 500ms both}
+.sticky-home .film-card{animation:from-right 900ms 250ms both}
+.sticky-home .film-card button{animation:from-top 700ms 450ms both}
+.sticky-home .progress,.sticky-home .down-marks{animation:from-bottom 800ms 400ms both}
+.collection-scene{animation:none}
+.collection-copy>.collection-kicker{display:block;animation:from-top 800ms 100ms both}
+.collection-copy h2{animation:from-left 900ms 150ms both}
+.collection-copy p{animation:from-left 850ms 250ms both}
+.collection-tag{animation:from-bottom 800ms 350ms both}
+.details-link{animation:from-left 800ms 450ms both}
+.rain-art{animation:from-bottom 1000ms 100ms both}
+.collection-options>.collection-kicker{display:block;animation:from-top 800ms 200ms both}
+.color-swatch{animation:from-right 800ms 250ms both}
+.product-meta{animation:from-right 800ms 300ms both}
+.product-meta p{animation:from-top 700ms 400ms both}
+.collection-sizes button{animation:from-right 700ms 350ms both}
+.collection-sizes button:nth-child(2){animation-delay:420ms}
+.collection-sizes button:nth-child(3){animation-delay:490ms}
+.collection-sizes button:nth-child(4){animation-delay:560ms}
+.collection-actions .primary{animation:from-bottom 850ms 500ms both}
+.collection-actions .icon-button{animation:from-right 850ms 550ms both}
+.slide-number{animation:from-bottom 750ms 450ms both}
+.scroll-dots button{animation:from-left 750ms 200ms both}
+.scroll-dots button:nth-child(2){animation-delay:300ms}
+@keyframes from-left{from{opacity:0;translate:-70px 0}to{opacity:1;translate:0 0}}
+@keyframes from-right{from{opacity:0;translate:70px 0}to{opacity:1;translate:0 0}}
+@keyframes from-top{from{opacity:0;translate:0 -60px}to{opacity:1;translate:0 0}}
+@keyframes from-bottom{from{opacity:0;translate:0 70px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){.sticky-home *{animation:none!important}}
+
+html{scrollbar-gutter:stable;scroll-snap-type:y proximity;scrollbar-width:thin;scrollbar-color:#555 #e7e7e4}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#e7e7e4}::-webkit-scrollbar-thumb{background:#555;border:2px solid #e7e7e4;border-radius:8px}
+.scroll-stop{position:absolute;left:0;right:0;height:100dvh;scroll-snap-align:start;pointer-events:none}
+.first-stop{top:0}.second-stop{top:100dvh}
+.scroll-dots button{animation:none!important;min-height:30px}
+.rain-art:not(.detail-art){left:34%;width:33%;top:16%;height:84%}
+.raincoat-image{display:block;width:100%;height:100%;overflow:hidden}
+.jacket-color-layer{animation:color-reveal .2s ease-out}
+.swatch-buttons{display:flex;gap:7px;flex-wrap:wrap}
+.swatch-buttons button{width:36px;height:39px;padding:3px;border:1px solid transparent;position:relative}
+.swatch-buttons button span{display:block;width:100%;height:100%;background:var(--swatch-color)}
+.swatch-buttons button[aria-pressed=true]{border-color:#111}
+.swatch-buttons button[aria-pressed=true]:after{content:'';position:absolute;bottom:-4px;left:3px;right:3px;height:2px;background:#111}
+.color-swatch p{margin-top:12px}
+@keyframes color-reveal{from{opacity:0}to{opacity:1}}
+@media(max-width:760px){
+ .rain-art:not(.detail-art){left:26%;top:36%;width:51%;height:35%}
+ .collection-options{bottom:2%;}
+ .collection-options>.collection-kicker:first-child{display:block;font-size:11px;animation:none}
+ .collection-options .color-swatch{display:block;margin-top:5px}
+ .swatch-buttons{gap:6px}
+ .swatch-buttons button{width:38px;height:35px}
+ .color-swatch p{font-size:10px;margin:7px 0}
+ .collection-sizes{margin-bottom:7px}
+ .collection-sizes button{height:32px}
+ .slide-number{bottom:32%}
+ .rain-scene:after{height:33.3%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-snap-type:none}.jacket-color-layer{animation:none}}
+

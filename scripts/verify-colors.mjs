@@ -1,0 +1,38 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
+await page.goto('http://localhost:5175');
+await page.evaluate(()=>{window.originalHeader=document.querySelector('.persistent-header')});
+await page.mouse.wheel(0,1200);
+await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-1'));
+assert.ok(await page.evaluate(()=>window.originalHeader===document.querySelector('.persistent-header')));
+const shots=[];
+for(const color of ['Metal','Olive','Cobalt','Burgundy','Sand','Plum']){
+ await page.getByRole('button',{name:`Choose ${color} jacket`}).click();
+ assert.equal(await page.getByRole('button',{name:`Choose ${color} jacket`}).getAttribute('aria-pressed'),'true');
+ assert.equal(await page.locator('.raincoat-image').getAttribute('data-color'),color);
+ const shot=await page.locator('.rain-art').screenshot();shots.push(shot.toString('base64'));
+ await page.screenshot({path:`verification/jacket-${color.toLowerCase()}.png`});
+}
+assert.equal(new Set(shots).size,6);
+await page.mouse.wheel(0,-1200);
+await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-0'));
+await page.getByRole('button',{name:'Show slide 2: Ilux raincoat'}).click();
+await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-1'));
+assert.equal(await page.locator('.raincoat-image').getAttribute('data-color'),'Plum');
+await page.emulateMedia({reducedMotion:'no-preference'});
+await page.waitForTimeout(1400);
+assert.equal(await page.locator('.persistent-header').evaluate(el=>el.getAnimations({subtree:true}).filter(a=>a.playState==='running').length),0);
+await page.getByRole('button',{name:'Show slide 1: Winter protection'}).click();
+await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-0'));
+assert.equal(await page.locator('.persistent-header').evaluate(el=>el.getAnimations({subtree:true}).filter(a=>a.playState==='running').length),0);
+await page.setViewportSize({width:390,height:844});
+await page.getByRole('button',{name:'Show slide 2: Ilux raincoat'}).click();
+await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-1'));
+await page.getByRole('button',{name:'Choose Olive jacket'}).click();
+await page.waitForTimeout(1400);
+await page.screenshot({path:'verification/jacket-mobile.png'});
+assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+console.log('PASS: wheel scrolling both directions, persistent header with no replay, six distinct color previews, selection persistence and mobile color controls.');
+await browser.close();

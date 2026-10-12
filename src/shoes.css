@@ -1,0 +1,77 @@
+body{overflow-x:clip}
+.bag-story{height:600vh;height:600dvh}
+.shoes-story{height:100vh;height:100dvh;margin-top:-100dvh;position:relative;z-index:3;--shoes-x:100vw;--shoes-y:0px;--shoes-visible:hidden}
+.shoes-stop{position:absolute;top:0;left:0;right:0;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none}
+.shoes-stage{position:sticky;top:0;height:100dvh;width:100%;visibility:var(--shoes-visible);transform:translate3d(var(--shoes-x),var(--shoes-y),0);will-change:transform;background:#b22314;overflow:hidden;isolation:isolate;color:#fff}
+.shoes-header{position:absolute;left:3%;right:3%;top:5%;z-index:5;display:flex;justify-content:space-between;align-items:center;pointer-events:none;font:700 10px Arial,sans-serif;letter-spacing:1px}
+.shoe-department{font-size:9px;opacity:.7}.shoes-brand{position:absolute;left:50%;transform:translateX(-50%);font:bold 23px Arial,sans-serif;letter-spacing:-1px}.shoes-header button{pointer-events:auto;font-size:9px;display:flex;align-items:center;gap:8px;min-height:35px}
+.shoe-panels{display:flex;width:100%;height:100%}
+.shoe-panel{position:relative;min-width:0;flex:1;background:var(--shoe-color);overflow:hidden;transition:flex 850ms cubic-bezier(.16,1,.3,1),filter .3s ease;isolation:isolate}
+.shoe-panel.shoe-active{flex:2.35}.shoe-panel:hover{filter:brightness(1.04)}
+.shoe-art{position:absolute;left:50%;top:14%;width:clamp(300px,40vw,670px);height:clamp(340px,46vw,720px);transform:translateX(-50%) rotate(-5deg) scale(.9);background-image:url('/images/shoe-atlas.png');background-size:200% 200%;background-repeat:no-repeat;transition:transform 850ms cubic-bezier(.16,1,.3,1);pointer-events:none}
+.shoe-active .shoe-art{transform:translateX(-50%) rotate(0deg) scale(1.08)}
+.shoe-panel-copy{position:absolute;left:13%;right:12%;bottom:12%;z-index:2}.shoe-plus{background:#fff1c6;color:#5c3323;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;margin-bottom:45px;transition:transform .3s,background .3s}.shoe-plus:hover{transform:rotate(90deg);background:#fff}.shoe-plus:focus-visible{outline:2px solid white;outline-offset:5px}
+.shoe-panel h2{font:600 clamp(20px,2.1vw,34px)/1.15 Arial,sans-serif;margin:0;letter-spacing:-.7px}.shoe-panel h2 span{font-size:.8em}.shoe-number{display:block;font:9px 'Space Mono',monospace;letter-spacing:2px;margin-top:17px;opacity:.6}
+.shoes-entered .shoe-art{animation:shoe-arrive 1.1s cubic-bezier(.16,1,.3,1) var(--shoe-delay) both}
+.shoes-entered .shoe-panel-copy{animation:shoe-copy-in 900ms ease-out calc(var(--shoe-delay) + 150ms) both}.shoes-entered .shoes-header{animation:shoe-copy-in 800ms 100ms both}
+.shoe-dialog-scrim{position:absolute;inset:0;z-index:20;background:#0007;backdrop-filter:blur(5px);display:flex;justify-content:flex-end}
+.shoe-dialog{width:min(430px,100%);height:100%;background:#f5f5f3;color:#111;padding:28px;overflow-y:auto;animation:slide .3s ease-out}.shoe-dialog>.icon-button{margin-left:auto;width:40px;height:40px}.shoe-dialog-art{height:260px;background-image:url('/images/shoe-atlas.png');background-size:200% 200%;background-repeat:no-repeat;margin-top:20px;border-radius:3px}.shoe-dialog h2{font:600 34px 'Barlow Condensed',sans-serif;margin:20px 0 10px}.shoe-dialog p{font:14px/1.6 Arial,sans-serif}.shoe-dialog .shoe-demo{font-size:11px;color:#777}.shoe-dialog .primary{margin-top:25px}
+@keyframes shoe-arrive{from{opacity:0;translate:80px -60px}to{opacity:1;translate:0 0}}
+@keyframes shoe-copy-in{from{opacity:0;translate:0 30px}to{opacity:1;translate:0 0}}
+@media(max-width:760px){.shoes-header{top:4%;left:5%;right:5%}.shoe-department{font-size:7px;max-width:60px}.shoes-brand{font-size:20px}.shoes-header button{font-size:7px;max-width:80px}.shoe-panel.shoe-active{flex:3.8}.shoe-art{width:320px;height:370px;top:21%}.shoe-active .shoe-art{transform:translateX(-50%) rotate(0) scale(.95)}.shoe-panel-copy{left:12%;bottom:13%;right:7%}.shoe-panel h2{font-size:13px;letter-spacing:0}.shoe-panel:not(.shoe-active) h2{writing-mode:vertical-rl;white-space:nowrap;font-size:11px}.shoe-panel:not(.shoe-active) h2 br{display:none}.shoe-panel:not(.shoe-active) .shoe-number{display:none}.shoe-plus{width:30px;height:30px;margin-bottom:25px}.shoe-plus svg{width:15px}.shoe-number{font-size:8px;letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){.shoes-stage *{animation:none!important;transition:none!important}}
+.cart-shoe{width:70px;height:95px;flex-shrink:0;background-image:url('/images/shoe-atlas.png');background-size:200% 200%;background-repeat:no-repeat}
+html,body{overscroll-behavior:none}
+.shoes-stage{position:fixed;inset:0;height:100dvh;transform:translate3d(var(--shoes-x),0,0);backface-visibility:hidden}
+.shoe-art,.bag-product img,.bag-thumbnails img{-webkit-user-drag:none;user-select:none}
+.shoe-panel{cursor:pointer}
+.shoe-product-page{position:absolute;inset:0;z-index:20;overflow:hidden;color:#fff;font-family:Arial,sans-serif;isolation:isolate}
+.shoe-product-background{position:absolute;inset:0;background:var(--product-color);transform-origin:var(--product-origin) 50%;animation:shoe-background-expand 850ms cubic-bezier(.16,1,.3,1) both;z-index:-1}
+.shoe-product-header{position:absolute;left:3%;right:3%;top:4%;display:flex;align-items:center;justify-content:space-between;animation:shoe-copy-in 650ms 200ms both}
+.shoe-product-header>button{display:flex;align-items:center;gap:9px;min-height:44px;font-size:10px;letter-spacing:1px}.shoe-product-header>span{position:absolute;left:50%;transform:translateX(-50%);font-size:23px;font-weight:bold;letter-spacing:-1px}.shoe-back-arrow{rotate:180deg}
+.shoe-product-art{position:absolute;left:5%;top:19%;width:min(46vw,650px);height:min(46vw,650px);background-image:url('/images/shoe-atlas.png');background-size:200% 200%;background-repeat:no-repeat;transform:rotate(-40deg);animation:shoe-turn-horizontal 1100ms cubic-bezier(.16,1,.3,1) both;pointer-events:none}
+.shoe-product-copy{position:absolute;left:60%;top:36%;width:32%;max-width:440px}.shoe-product-copy h2{font:600 clamp(28px,3.6vw,58px)/1.05 Arial,sans-serif;letter-spacing:-1px;margin:0 0 20px;animation:shoe-copy-in 800ms 250ms both}.shoe-product-copy h2 span{font-size:.85em}.shoe-product-meta{font:9px 'Space Mono',monospace;letter-spacing:1px;opacity:.65;animation:shoe-copy-in 800ms 330ms both}.shoe-product-copy>p:not(.shoe-product-meta){font:12px/1.7 Arial,sans-serif;max-width:300px;animation:shoe-copy-in 800ms 420ms both}.shoe-product-add{display:flex;align-items:center;justify-content:space-between;gap:25px;background:#fff1c6;color:#392b24;padding:14px 18px;margin-top:25px;font-size:11px;min-width:190px;animation:shoe-copy-in 800ms 500ms both}.shoe-product-copy .shoe-product-demo{font-size:9px!important;opacity:.6}.shoe-product-index{position:absolute;left:4%;bottom:5%;font:9px 'Space Mono',monospace;letter-spacing:2px;opacity:.6;animation:shoe-copy-in 750ms 500ms both}
+@keyframes shoe-background-expand{from{transform:scaleX(.18)}to{transform:scaleX(1)}}
+@keyframes shoe-turn-horizontal{from{opacity:.4;transform:translateX(35%) rotate(0deg) scale(1.08)}to{opacity:1;transform:translateX(0) rotate(-40deg) scale(1)}}
+@media(max-width:760px){.shoe-product-art{left:8%;top:14%;width:84vw;height:84vw}.shoe-product-copy{left:10%;top:57%;width:80%;max-width:none}.shoe-product-copy h2{font-size:32px;margin-bottom:13px}.shoe-product-meta{font-size:7px}.shoe-product-copy>p:not(.shoe-product-meta){font-size:11px;max-width:270px}.shoe-product-add{margin-top:14px;padding:12px 15px}.shoe-product-index{bottom:3%;left:10%;font-size:7px}.shoe-product-header{left:6%;right:6%}}
+@media(prefers-reduced-motion:reduce){.shoe-product-page *{animation:none!important;transition:none!important}}
+.shoe-panel{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='54' height='54' viewBox='0 0 54 54'%3E%3Ccircle cx='27' cy='27' r='26' fill='%23fff1c6'/%3E%3Cpath d='M27 18v18M18 27h18' stroke='%235c3323' stroke-width='2'/%3E%3C/svg%3E") 27 27, crosshair}
+.shoes-entered .shoe-panel-copy,.shoe-panel-copy{animation:none!important;opacity:0;translate:0 25px;transition:opacity 350ms ease,translate 450ms cubic-bezier(.16,1,.3,1);pointer-events:none}
+.shoe-panel:hover .shoe-panel-copy,.shoe-panel:focus-visible .shoe-panel-copy{opacity:1;translate:0 0}
+.shoe-panel:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.shoe-product-closing{pointer-events:none}
+.shoe-product-closing .shoe-product-background{animation:shoe-background-expand 850ms cubic-bezier(.16,1,.3,1) reverse both}
+.shoe-product-closing .shoe-product-art{animation:shoe-turn-horizontal 850ms cubic-bezier(.16,1,.3,1) reverse both}
+.shoe-product-closing .shoe-product-copy>*{animation:shoe-copy-in 300ms ease reverse both}
+.shoe-product-closing .shoe-product-header,.shoe-product-closing .shoe-product-index{animation:shoe-copy-in 300ms ease reverse both}
+@media(hover:none){.shoe-panel.shoe-active .shoe-panel-copy{opacity:1;translate:0 0}}
+.shoes-header{pointer-events:auto}
+.shoe-panel.shoe-active{flex:1}
+.shoe-panel:hover,.shoe-panel:focus-visible{flex:2.35}
+@media(max-width:760px){.shoe-panel:hover,.shoe-panel:focus-visible{flex:3.8}}
+.shoes-product-open .shoe-panel{flex:1!important;transition:none}
+.shoes-product-open .shoe-selected .shoe-art{visibility:hidden}
+.shoes-product-open .shoe-panel-copy{opacity:0!important}
+.shoes-product-open .shoe-art{transform:translateX(-50%) rotate(-5deg) scale(.9)}
+.shoe-product-closing{animation:shoe-page-return 850ms cubic-bezier(.65,0,.35,1) both}
+.shoe-product-closing .shoe-product-background{animation:none;transform:none}
+.shoe-product-closing .shoe-product-art{animation:shoe-art-return 850ms cubic-bezier(.65,0,.35,1) both}
+.shoe-product-closing .shoe-product-copy,.shoe-product-closing .shoe-product-header,.shoe-product-closing .shoe-product-index{visibility:hidden}
+@keyframes shoe-page-return{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(0 var(--return-inset-right) 0 var(--return-inset-left))}}
+@keyframes shoe-art-return{from{left:5%;top:19%;width:min(46vw,650px);height:min(46vw,650px);opacity:1;transform:rotate(-40deg)}to{left:var(--return-left);top:14%;width:clamp(300px,40vw,670px);height:clamp(340px,46vw,720px);opacity:1;transform:translateX(-50%) rotate(-5deg) scale(.9)}}
+@media(max-width:760px){@keyframes shoe-art-return{from{left:8%;top:14%;width:84vw;height:84vw;opacity:1;transform:rotate(-40deg)}to{left:var(--return-left);top:21%;width:320px;height:370px;opacity:1;transform:translateX(-50%) rotate(-5deg) scale(.9)}}}
+.shoe-product-scroll{position:absolute;inset:0;z-index:20;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scroll-snap-type:none;scrollbar-width:thin;scrollbar-color:#ffffff70 transparent}
+.shoe-product-track{height:300dvh;position:relative}
+.shoe-product-scroll .shoe-product-page{position:sticky;top:0;height:100dvh;inset:auto;background:#fffdf1}
+.shoe-product-background{bottom:auto;height:var(--color-height,100%)}
+.shoe-product-copy{top:calc(36% - var(--product-progress,0) * 26%);opacity:var(--title-opacity,1)}
+.shoe-product-copy>.shoe-product-add,.shoe-product-copy>.shoe-product-demo,.shoe-product-copy>p:not(.shoe-product-meta){opacity:clamp(0,calc(1 - var(--product-progress,0) * 4),1)}
+.shoe-product-light .shoe-product-header{color:var(--product-color)}
+.shoe-purchase{position:absolute;left:60%;top:56%;width:32%;color:#766e62;opacity:var(--purchase-opacity,0);visibility:visible}
+.shoe-purchase>p{font:22px Arial,sans-serif;margin:0 0 22px}.shoe-purchase small{font-size:9px;margin-left:10px;color:#a59c8b}
+.shoe-purchase>div{display:flex;gap:14px}.shoe-size-label{display:flex;align-items:center;gap:12px;border:1px solid #d7cfbf;padding:9px;font:8px Arial,sans-serif;color:#aaa}.shoe-size-label select{font:10px Arial,sans-serif;background:none;color:#685f50;border:0;padding:5px;cursor:pointer}.shoe-purchase button{background:var(--product-color);color:white;font:9px Arial,sans-serif;letter-spacing:1px;flex:1;padding:12px}.shoe-purchase>span{display:block;font:9px Arial,sans-serif;color:#b5aa97;margin-top:16px}
+.shoe-info-panel{position:absolute;left:60%;right:0;top:var(--info-top,100%);height:83%;background:#ffe6b6;color:#786647;padding:45px 45px 30px;font:12px/1.7 Arial,sans-serif}.shoe-info-panel h3{font-size:14px;margin:0 0 12px}.shoe-info-panel>p{max-width:340px}.shoe-info-panel dl{display:grid;grid-template-columns:1fr 1fr;gap:30px 20px;margin-top:32px}.shoe-info-panel dt{font-weight:700;margin-bottom:8px}.shoe-info-panel dd{margin:0;font-size:11px;max-width:150px}
+.shoe-product-thumbnails{position:absolute;left:8%;bottom:12%;display:flex;align-items:center;gap:12px;z-index:3}.shoe-product-thumbnails>button{width:44px;height:38px;padding:3px;border:1px solid transparent}.shoe-product-thumbnails>button[aria-pressed=true]{border-color:#b8aa91}.shoe-product-thumbnails button>div{height:100%;width:100%;background-image:url('/images/shoe-atlas.png');background-size:200% 200%;background-repeat:no-repeat;transform:rotate(-40deg)}.shoe-product-thumbnails .shoe-video{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#786647;gap:3px}.shoe-video span{font:7px Arial,sans-serif;letter-spacing:1px}.shoe-video-note{position:absolute;top:38px;left:0;width:210px;color:#756748;font:10px/1.5 Arial,sans-serif;background:#fffdf1;padding:8px}.shoe-product-index{display:none}
+.shoe-product-closing .shoe-info-panel,.shoe-product-closing .shoe-purchase,.shoe-product-closing .shoe-product-thumbnails{visibility:hidden}
+@media(max-width:760px){.shoe-product-scroll .shoe-product-art{left:0;top:15%;width:67vw;height:67vw}.shoe-product-scroll .shoe-product-copy{left:62%;top:23%;width:34%}.shoe-product-copy h2{font-size:24px}.shoe-product-meta{font-size:6px}.shoe-product-copy>.shoe-product-add{min-width:0;font-size:8px;padding:9px;gap:5px}.shoe-product-copy>.shoe-product-add svg{width:12px}.shoe-product-copy>p{font-size:9px!important}.shoe-purchase{left:10%;top:53%;width:80%}.shoe-purchase>p{font-size:18px;margin-bottom:13px}.shoe-info-panel{left:8%;right:8%;top:calc(100% - var(--product-progress,0) * 48%);height:48%;padding:20px;font-size:10px;line-height:1.4}.shoe-info-panel h3{font-size:12px}.shoe-info-panel dl{gap:13px;margin-top:18px}.shoe-info-panel dd{font-size:9px}.shoe-product-thumbnails{left:8%;bottom:auto;top:44%;gap:7px}.shoe-product-thumbnails>button{width:33px;height:30px}.shoe-product-header>button{font-size:8px}}
+

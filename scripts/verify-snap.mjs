@@ -1,0 +1,16 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:900}});
+await page.goto('http://localhost:5175');
+await page.evaluate(()=>scrollTo(0,innerHeight));
+await page.waitForTimeout(300);
+await page.mouse.wheel(0,650);
+await page.waitForTimeout(1200);
+assert.ok(Math.abs((await page.locator('.bag-stage').boundingBox()).y)<2,'Bag must settle at viewport top');
+assert.ok(Math.abs(await page.evaluate(()=>scrollY)-1800)<2);
+await page.mouse.wheel(0,-650);
+await page.waitForTimeout(1200);
+assert.ok(Math.abs(await page.evaluate(()=>scrollY)-900)<2,'Reverse scroll must settle on raincoat hero');
+await page.screenshot({path:'verification/snap-back.png'});
+console.log('PASS: wheel scroll settles fully on bag and reverses to hero.');await browser.close();

@@ -1,0 +1,30 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'no-preference'});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://localhost:5175');
+await page.evaluate(()=>document.documentElement.style.scrollSnapType='none');
+for(const progress of [.25,.5,.75,1,.75,.5,.25]){
+ await page.evaluate(p=>{const el=document.querySelector('.bag-story');const top=window.scrollY+el.getBoundingClientRect().top;window.scrollTo(0,top-(1-p)*innerHeight)},progress);
+ await page.waitForTimeout(80);
+ const box=await page.locator('.bag-stage').boundingBox();
+ assert.ok(Math.abs(box.y-900*Math.pow(1-progress,3))<2);assert.ok(Math.abs((await page.locator('.canvas').boundingBox()).y)<2);
+ await page.screenshot({path:`verification/fold-${progress}.png`});
+}
+assert.equal(await page.locator('.bag-expand,.bag-more').count(),0);
+await page.evaluate(()=>{const el=document.querySelector('.bag-story');window.scrollTo(0,window.scrollY+el.getBoundingClientRect().top)});await page.waitForTimeout(80);await page.getByRole('button',{name:'Open bag navigation'}).click();
+await page.getByRole('dialog',{name:'SANDQVIST'}).waitFor();
+await page.keyboard.press('Escape');assert.equal(await page.locator('.bag-side-nav').count(),0);
+await page.evaluate(()=>{const el=document.querySelector('.bag-story');window.scrollTo(0,window.scrollY+el.getBoundingClientRect().top)});await page.waitForTimeout(80);await page.getByRole('button',{name:'Open bag navigation'}).click();
+await page.getByRole('button',{name:'Product details',exact:true}).click();
+await page.waitForFunction(()=>document.querySelector('.bag-stage').dataset.step==='4');
+assert.equal(await page.locator('.bag-side-nav').count(),0);
+await page.setViewportSize({width:390,height:844});
+await page.evaluate(()=>{const el=document.querySelector('.bag-story');window.scrollTo(0,window.scrollY+el.getBoundingClientRect().top)});await page.waitForTimeout(80);await page.getByRole('button',{name:'Open bag navigation'}).click();
+await page.getByRole('button',{name:'Maroon',exact:true}).click();
+await page.waitForFunction(()=>document.querySelector('.bag-stage').dataset.step==='1');
+assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+await page.emulateMedia({reducedMotion:'reduce'});
+assert.equal(await page.locator('.bag-fold-layer').count(),0);assert.equal(await page.locator('.bag-stage').evaluate(el=>getComputedStyle(el).transform),'none');
+assert.deepEqual(errors,[]);console.log('PASS: scroll-linked section slide in both directions, removed controls, drawer open/Escape/navigation, mobile and reduced motion.');await browser.close();

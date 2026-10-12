@@ -1,0 +1,55 @@
+.scroll-story{height:200vh;height:200dvh}
+.bag-story{height:500vh;height:500dvh;position:relative}
+.bag-stop{position:absolute;left:0;right:0;height:100dvh;scroll-snap-align:start;pointer-events:none}
+.bag-stage{height:100dvh;position:sticky;top:0;overflow:hidden;background:#fff;border:1px solid #b4b4b1;isolation:isolate;font-family:'Barlow Condensed',sans-serif}
+.bag-white-side{position:absolute;inset:0 50% 0 0;background:#fff;z-index:1}
+.bag-color-side{position:absolute;inset:0 0 0 50%;animation:bag-slide-up 850ms cubic-bezier(.16,1,.3,1) both;z-index:0}
+.bag-brand{position:absolute;left:3.5%;top:6.5%;font:700 11px Arial,sans-serif;letter-spacing:2.3px;z-index:4}
+.bag-menu{position:absolute;right:3.2%;top:6.5%;display:grid;gap:3px;width:20px;padding:10px 0;z-index:4}.bag-menu span{height:1px;background:white;width:16px}
+.bag-model-name,.bag-color-name{position:absolute;top:44%;margin:0;font-weight:500;font-size:clamp(40px,5.4vw,86px);line-height:1;z-index:3;letter-spacing:-1px}
+.bag-model-name{left:11%}.bag-color-name{right:10%;color:#fff;animation:bag-label-up 850ms cubic-bezier(.16,1,.3,1) both}
+.bag-product{position:absolute;left:30%;top:9%;width:40%;height:84%;z-index:2;transition:left 900ms cubic-bezier(.16,1,.3,1),width 900ms cubic-bezier(.16,1,.3,1),transform 900ms cubic-bezier(.16,1,.3,1)}
+.bag-product img{width:100%;height:100%;object-fit:contain;animation:bag-image-in 700ms ease-out both;transition:filter 700ms ease-out}
+.bag-stage:after{content:'';position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(transparent,#00000018);pointer-events:none;z-index:3}
+.bag-footer{position:absolute;bottom:3%;left:3%;display:flex;gap:13px;align-items:center;z-index:4}
+.bag-scroll-controls{display:flex;gap:5px;align-self:flex-start}.bag-scroll-controls button{width:26px;height:26px;border:1px solid #555;border-radius:50%;display:grid;place-items:center}.bag-scroll-controls button:first-child svg{rotate:180deg}.bag-scroll-controls svg{width:17px;height:17px;stroke-width:1}.bag-scroll-controls button:disabled{opacity:.3;cursor:default}
+.bag-footer span{font-size:9px;letter-spacing:1px;display:block;margin-bottom:4px}.bag-footer strong{font:600 30px Arial,sans-serif;letter-spacing:-1px;color:#333}.bag-footer i{font-style:normal;color:#aaa;font-size:23px}
+.bag-dots{position:absolute;left:45%;bottom:4%;display:flex;gap:8px;z-index:4}.bag-dots button{background:var(--bag-dot);width:19px;height:19px;border:3px solid #fff8;border-radius:50%}.bag-dots button[aria-pressed=true]{outline:1px solid #111;outline-offset:3px}
+.bag-expand{position:absolute;right:0;bottom:10%;width:80px;height:80px;border-radius:30px 0 0 30px;background:#bdbdab;color:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:4}.bag-expand svg{width:26px;height:26px;stroke-width:2}.bag-expand svg:last-child{rotate:90deg;margin-top:-8px;margin-left:-15px}
+.bag-more{position:absolute;right:3%;bottom:3%;padding:12px 28px;background:#ffffffbd;color:#444;font-size:10px;letter-spacing:1px;z-index:4}
+.bag-detail .bag-white-side{inset:0;clip-path:polygon(0 0,90% 0,63% 100%,0 100%)}
+.bag-detail .bag-color-side{left:0;animation:bag-slide-up 850ms cubic-bezier(.16,1,.3,1) both}
+.bag-detail .bag-product{left:52%;top:12%;width:38%;height:78%;transform:rotate(7deg)}
+.bag-description{position:absolute;left:21%;top:32%;width:26%;z-index:4;animation:bag-label-up 900ms ease-out both}.bag-description>span{font-size:11px;color:#b1b1ac;letter-spacing:1px}.bag-description h2{font-weight:500;font-size:clamp(25px,3vw,48px);margin:10px 0 4px;line-height:1.1}.bag-description p{font:12px/1.8 Arial,sans-serif;color:#999;max-width:290px}.bag-description .bag-price{color:#333;margin-top:0}.bag-price small{font-size:9px;color:#999;margin-left:8px}.bag-description .bag-demo-note{font-size:10px}.bag-buy{background:#000;color:#fff;padding:16px 28px;margin-top:12px;font-size:12px;letter-spacing:1px}
+.bag-thumbnails{position:absolute;left:3.5%;top:33%;display:grid;gap:16px;z-index:4}.bag-thumbnails button{width:50px;height:55px;background:#f4f4f0;overflow:hidden;border:1px solid transparent;padding:4px}.bag-thumbnails button[aria-pressed=true]{border-color:#aaa}.bag-thumbnails img{width:100%;height:100%;object-fit:contain}
+.bag-product.preview-1 img{scale:1.22;transform-origin:center 25%}.bag-product.preview-2 img{scale:1.35;transform-origin:center 55%}.bag-detail .bag-dots{display:none}
+@keyframes bag-slide-up{from{translate:0 100%}to{translate:0 0}}
+@keyframes bag-label-up{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+@keyframes bag-image-in{from{opacity:.25;translate:0 18px}to{opacity:1;translate:0 0}}
+@media(max-width:760px){.bag-brand{left:6%;top:5%;font-size:9px}.bag-menu{right:6%;top:4%}.bag-model-name,.bag-color-name{top:25%;font-size:35px}.bag-model-name{left:7%}.bag-color-name{right:6%}.bag-product{left:8%;width:84%;top:31%;height:54%}.bag-expand{width:52px;height:62px;border-radius:22px 0 0 22px;bottom:8%}.bag-more{right:4%;bottom:2%;padding:9px 15px}.bag-footer{left:5%;bottom:3%;gap:7px}.bag-footer strong{font-size:21px}.bag-footer i{font-size:17px}.bag-scroll-controls button{width:23px;height:23px}.bag-dots{left:40%;bottom:6%;gap:6px}.bag-dots button{width:15px;height:15px;border-width:2px}.bag-detail .bag-white-side{clip-path:polygon(0 0,88% 0,48% 100%,0 100%)}.bag-description{left:7%;top:15%;width:80%}.bag-description h2{font-size:30px}.bag-description p{font-size:10px;line-height:1.5;max-width:245px}.bag-description .bag-demo-note{display:none}.bag-buy{font-size:10px;padding:11px 18px;margin-top:0}.bag-detail .bag-product{left:26%;top:43%;width:66%;height:43%;transform:rotate(5deg)}.bag-thumbnails{left:6%;top:51%;gap:10px}.bag-thumbnails button{width:36px;height:42px}}
+@media(prefers-reduced-motion:reduce){.bag-stage *{animation:none!important;transition:none!important}}
+
+.bag-menu{width:44px;height:44px;justify-content:center;align-content:center;padding:10px;top:4.5%}
+.bag-nav-scrim{position:fixed;inset:0;background:#0005;z-index:40;display:flex;justify-content:flex-end;backdrop-filter:blur(3px)}
+.bag-side-nav{width:min(420px,100%);height:100%;overflow-y:auto;background:#f5f5ef;padding:32px;animation:slide .3s ease-out;font-family:'Barlow Condensed',sans-serif}
+.bag-nav-header{display:flex;justify-content:space-between;align-items:center}.bag-nav-header h2{font:700 12px Arial,sans-serif;letter-spacing:2px;margin:0}.bag-nav-header button{width:44px;height:44px}
+.bag-side-nav>p{font-size:12px;letter-spacing:2px;color:#777;margin:48px 0 16px}.bag-side-nav nav{display:grid}.bag-side-nav nav button{display:flex;align-items:center;gap:12px;text-align:left;border-top:1px solid #ccc;padding:20px 0;font-size:25px}.bag-side-nav nav button>span{height:15px;width:15px;border-radius:50%}.bag-side-nav nav button svg{margin-left:auto}.bag-side-nav nav button:last-child{font-size:17px}
+.scroll-story{height:300vh;height:300dvh}
+.bag-story{margin-top:-100dvh;z-index:2;--section-slide:0px}
+.bag-stage{border:0;transform:translateY(var(--section-slide));will-change:transform}
+html{scroll-snap-type:y mandatory;scroll-padding-top:0}
+.scroll-stop,.bag-stop{scroll-snap-stop:always}
+.bag-stage{backface-visibility:hidden}
+.bag-stage[data-direction=down] .bag-color-side{animation-name:bag-slide-down}
+.bag-stage[data-direction=down] .bag-color-name{animation-name:bag-label-down}
+.bag-stage[data-direction=down] .bag-product img{animation-name:bag-image-down}
+@keyframes bag-slide-down{from{translate:0 -100%}to{translate:0 0}}
+@keyframes bag-label-down{from{opacity:0;translate:0 -40px}to{opacity:1;translate:0 0}}
+@keyframes bag-image-down{from{opacity:.25;translate:0 -18px}to{opacity:1;translate:0 0}}
+.bag-white-side{inset:0;clip-path:polygon(0 0,50% 0,50% 100%,0 100%);transition:clip-path 900ms cubic-bezier(.16,1,.3,1)}
+.bag-color-side{inset:0}
+.bag-stage[data-motion=morph] .bag-color-side,.bag-stage[data-motion=morph] .bag-product img{animation:none;translate:0 0}
+.bag-stage{transform:translate3d(var(--bag-push,0px),var(--section-slide),0)}
+@media(prefers-reduced-motion:reduce){.bag-stage{transform:translateX(var(--bag-push,0px))}}
+@media(max-width:760px){.bag-side-nav{padding:24px}.bag-menu{right:3%;top:3%}}
+@media(prefers-reduced-motion:reduce){.bag-stage{transform:none;will-change:auto}.bag-side-nav{animation:none}}
