@@ -63,6 +63,7 @@ html,body{overscroll-behavior:none}
 .shoe-product-scroll{position:absolute;inset:0;z-index:20;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scroll-snap-type:none;scrollbar-width:thin;scrollbar-color:#ffffff70 transparent}
 .shoe-product-track{height:300dvh;position:relative}
 .shoe-product-scroll .shoe-product-page{position:sticky;top:0;height:100dvh;inset:auto;background:#fffdf1}
+.shoe-product-scroll .shoe-product-page{top:0}
 .shoe-product-background{bottom:auto;height:var(--color-height,100%)}
 .shoe-product-copy{top:calc(36% - var(--product-progress,0) * 26%);opacity:var(--title-opacity,1)}
 .shoe-product-copy>.shoe-product-add,.shoe-product-copy>.shoe-product-demo,.shoe-product-copy>p:not(.shoe-product-meta){opacity:clamp(0,calc(1 - var(--product-progress,0) * 4),1)}

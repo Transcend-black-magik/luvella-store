@@ -10,6 +10,9 @@ for(const p of [0,.5,1,.5,0]){
  await page.waitForTimeout(100);
  assert.equal(await page.locator('.shoe-product-page').getAttribute('data-progress'),p.toFixed(2));
  const bg=await page.locator('.shoe-product-background').boundingBox();assert.ok(Math.abs(bg.height-900*(1-p))<2);
+ const scene=await page.locator('.shoe-product-page').boundingBox();assert.ok(Math.abs(scene.y)<1&&scene.height===900,'Product scene must stay pinned');
+ if(p===.5){const info=await page.locator('.shoe-info-panel').boundingBox();assert.ok(info.y>800,'Information must not cover halfway purchase controls')}
+ if(p===1){const info=await page.locator('.shoe-info-panel').boundingBox();assert.ok(Math.abs(info.y-153)<2)}
  await page.screenshot({path:`verification/product-scroll-${p}.png`});
 }
 await page.locator('.shoe-product-scroll').evaluate(el=>el.scrollTop=(el.scrollHeight-el.clientHeight)*.5);await page.waitForTimeout(100);
