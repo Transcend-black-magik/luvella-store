@@ -80,3 +80,19 @@ html.about-route{scroll-snap-type:y mandatory;scroll-padding-top:0}
 .about-visible .editorial-accent{animation:about-enter-bottom 850ms 350ms both}
 .about-visible .editorial-footnote{animation:about-enter-left 850ms 400ms both}
 @media(prefers-reduced-motion:reduce){.about-visible .about-faces *,.about-visible .about-editorial *{animation:none!important}}
+.about-visible .faces-dark{animation:about-enter-left 850ms cubic-bezier(.16,1,.3,1) both}
+.about-visible .faces-photo{animation:about-enter-left 850ms cubic-bezier(.16,1,.3,1) 220ms both}
+.about-visible .faces-copy{animation:about-enter-left 850ms cubic-bezier(.16,1,.3,1) 440ms both}
+.about-visible .faces-number{animation:about-enter-left 750ms 520ms both}
+.about-visible .faces-copy h3{animation:about-enter-left 700ms 600ms both}
+.about-visible .faces-copy p{animation:about-enter-left 700ms 680ms both}
+.about-visible .faces-copy button{animation:about-enter-left 700ms 760ms both}
+.about-visible .editorial-label{animation:about-enter-left 800ms both}
+.about-visible .editorial-copy{animation:about-enter-left 850ms cubic-bezier(.16,1,.3,1) 180ms both}
+.about-visible .editorial-portrait{animation:about-enter-left 850ms cubic-bezier(.16,1,.3,1) 380ms both}
+.about-visible .editorial-big-number{animation:about-enter-left 850ms 580ms both}
+.about-visible .editorial-accent{animation:about-enter-left 750ms 660ms both}
+.about-visible .editorial-footnote{animation:about-enter-left 750ms 740ms both}
+.about-shared-header nav{padding:0 16px;background:#fffffff2;border:1px solid #0000000d;border-radius:3px;box-shadow:0 2px 12px #00000008}
+.about-shared-header nav a,.about-shared-header nav button{color:#191919;font-size:10px;font-weight:600;letter-spacing:.7px}
+@media(max-width:760px){.about-shared-header nav{padding:0 8px;gap:10px}.about-shared-header nav a,.about-shared-header nav button{font-size:8px;letter-spacing:.2px}}
