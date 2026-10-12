@@ -1,0 +1,10 @@
+import {chromium} from '@playwright/test';import assert from 'node:assert/strict';
+const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
+await page.goto('http://localhost:5175');await page.evaluate(()=>{const el=document.querySelector('.shoes-story');scrollTo(0,scrollY+el.getBoundingClientRect().top)});await page.getByRole('button',{name:'View Swift Red details'}).click();assert.ok(page.url().endsWith('/shoes/swift-red'));
+await page.reload();await page.getByRole('dialog',{name:/Swift Red/}).waitFor();
+const rect=await page.locator('.shoe-product-scroll').boundingBox();assert.equal(rect.x,0);assert.equal(rect.y,0);assert.equal(rect.width,1440);assert.equal(await page.locator('.shoe-product-scroll').evaluate(el=>getComputedStyle(el).scrollbarWidth),'none');
+await page.locator('.shoe-product-scroll').evaluate(el=>el.scrollTop=(el.scrollHeight-el.clientHeight)/2);await page.waitForTimeout(100);assert.equal(await page.locator('.shoe-product-page').getAttribute('data-progress'),'0.50');
+await page.getByRole('button',{name:/^all shoes$/i}).click();await page.waitForTimeout(100);assert.ok(page.url().endsWith('/'));assert.equal(await page.locator('.shoe-product-scroll').count(),0);
+await page.getByRole('button',{name:'View Swift Navy details'}).click();await page.goBack();await page.waitForTimeout(100);assert.equal(await page.locator('.shoe-product-scroll').count(),0);
+await page.goto('http://localhost:5175/shoes/swift-sand');await page.getByRole('dialog',{name:/Swift Sand/}).waitFor();
+console.log('PASS: shoe URLs, direct load/reload, edge-to-edge scrollbar-free page, scroll states, all-shoes and browser back.');await browser.close();
