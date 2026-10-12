@@ -18,4 +18,4 @@ Production hosting must serve index.html for /shoes/* routes.
 
 ## Verification
 
-With the development server on port 5175 and Chrome installed, run scripts/verify-bag.mjs, scripts/verify-shoes.mjs, scripts/verify-product-scroll.mjs, and scripts/verify-shoe-routes.mjs with Node. Screenshots are saved under verification/.
+With the development server on port 5175 and Chrome installed, run scripts/verify-bag.mjs, scripts/verify-shoes.mjs, scripts/verify-product-scroll.mjs, and scripts/verify-shoe-routes.mjs with Node. Screenshots are saved under verification/.About Luvella is available at /about with reveal animations, three story chapters, expandable copy and navigation. It reuses collection imagery in place of the reference studio photograph. Production hosting should also serve index.html for /about. Verify with node scripts/verify-about.mjs.

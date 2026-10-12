@@ -1,0 +1,9 @@
+import {chromium} from '@playwright/test';import assert from 'node:assert/strict';
+const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage({viewport:{width:1032,height:683},reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://localhost:5175');await page.getByRole('button',{name:'About us',exact:true}).click();await page.getByRole('heading',{name:'The Story.'}).waitFor();assert.ok(page.url().endsWith('/about'));await page.screenshot({path:'verification/about-desktop.png'});
+await page.getByRole('button',{name:'Read more'}).click();assert.equal(await page.getByRole('button',{name:'Read less'}).getAttribute('aria-expanded'),'true');await page.getByRole('button',{name:'Next story chapter'}).click();await page.getByRole('heading',{name:'The Details.'}).waitFor();
+await page.getByRole('button',{name:'Open navigation'}).click();await page.getByRole('link',{name:'Our story'}).click();assert.equal(await page.locator('.about-navigation').count(),0);
+await page.reload();await page.getByRole('heading',{name:'The Story.'}).waitFor();assert.equal(await page.title(),'About Luvella — Our Story');
+await page.setViewportSize({width:390,height:844});await page.screenshot({path:'verification/about-mobile.png'});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+await page.getByRole('link',{name:'Explore the collection'}).click();await page.getByRole('button',{name:'Catalog',exact:true}).waitFor();await page.goBack();await page.getByRole('heading',{name:'The Story.'}).waitFor();
+await page.emulateMedia({reducedMotion:'no-preference'});await page.reload();assert.ok(await page.locator('.about-image').evaluate(el=>el.getAnimations().length>0));assert.deepEqual(errors,[]);console.log('PASS: about navigation/direct reload/back, chapter/read-more/menu, mobile overflow and reveal motion.');await browser.close();
