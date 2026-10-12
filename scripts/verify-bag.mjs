@@ -26,7 +26,7 @@ for(const color of ['Maroon','Navy','Sand','Beluga']){
  assert.equal(await page.getByRole('button',{name:`Select ${color} bag color`}).getAttribute('aria-pressed'),'true');
 }
 await page.getByRole('button',{name:/^add to bag$/i}).click();
-await page.getByRole('heading',{name:'Marius backpack'}).waitFor();
+await page.getByRole('heading',{name:'Luvella backpack'}).waitFor();
 await page.keyboard.press('Escape');
 await page.setViewportSize({width:390,height:844});
 for(const i of [0,1,2,3,4]){

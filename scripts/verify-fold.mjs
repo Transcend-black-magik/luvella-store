@@ -14,7 +14,7 @@ for(const progress of [.25,.5,.75,1,.75,.5,.25]){
 }
 assert.equal(await page.locator('.bag-expand,.bag-more').count(),0);
 await page.evaluate(()=>{const el=document.querySelector('.bag-story');window.scrollTo(0,window.scrollY+el.getBoundingClientRect().top)});await page.waitForTimeout(80);await page.getByRole('button',{name:'Open bag navigation'}).click();
-await page.getByRole('dialog',{name:'SANDQVIST'}).waitFor();
+await page.getByRole('dialog',{name:'LUVELLA'}).waitFor();
 await page.keyboard.press('Escape');assert.equal(await page.locator('.bag-side-nav').count(),0);
 await page.evaluate(()=>{const el=document.querySelector('.bag-story');window.scrollTo(0,window.scrollY+el.getBoundingClientRect().top)});await page.waitForTimeout(80);await page.getByRole('button',{name:'Open bag navigation'}).click();
 await page.getByRole('button',{name:'Product details',exact:true}).click();

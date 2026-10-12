@@ -12,7 +12,7 @@ await page.locator('.shoe-panel').nth(3).hover();assert.ok(await page.locator('.
 await page.getByRole('button',{name:'View Swift Navy details'}).click();
 await page.getByRole('dialog').waitFor();await page.keyboard.press('Escape');
 await page.locator('.shoe-panel').nth(1).hover();await page.waitForTimeout(200);await page.getByRole('button',{name:'View Swift Red details'}).click();
-await page.screenshot({path:'verification/shoe-dialog-debug.png'});await page.getByRole('button',{name:'Add sample to bag'}).click();
+await page.screenshot({path:'verification/shoe-dialog-debug.png'});await page.locator('.shoe-product-scroll').evaluate(el=>el.scrollTop=(el.scrollHeight-el.clientHeight)/2);await page.waitForTimeout(100);await page.locator('.shoe-purchase button').click();
 await page.getByRole('heading',{name:'Swift Red',exact:true}).waitFor();await page.keyboard.press('Escape');
 for(const [index,name] of ['Swift Grey','Swift Red','Swift Sand','Swift Navy'].entries()){
  await page.locator('.shoe-panel').nth(index).hover();

@@ -64,6 +64,13 @@ html,body{overscroll-behavior:none}
 .shoe-product-track{height:300dvh;position:relative}
 .shoe-product-scroll .shoe-product-page{position:sticky;top:0;height:100dvh;inset:auto;background:#fffdf1}
 .shoe-product-scroll .shoe-product-page{top:0}
+.shoe-product-scroll{scroll-snap-type:y mandatory}
+.shoe-product-stop{position:absolute;left:0;right:0;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none}
+.shoe-product-scroll .shoe-product-copy{top:calc(44% - var(--product-progress,0) * 42%)}
+.shoe-product-scroll .shoe-product-art{left:0;top:calc(19% - var(--product-progress,0) * 12%);scale:.8;transition:scale 850ms cubic-bezier(.65,0,.35,1)}
+.shoe-product-closing .shoe-product-art{scale:1}
+.shoe-product-thumbnails{opacity:clamp(0,calc(var(--product-progress,0) * 4),1)}
+@media(max-width:760px){.shoe-product-scroll .shoe-product-copy{top:23%}.shoe-product-scroll .shoe-product-art{top:15%;scale:1}}
 html.shoe-route{overflow:hidden;scrollbar-gutter:auto;scroll-snap-type:none}
 html.shoe-route .shoes-stage{visibility:visible;transform:none}
 .shoe-product-scroll{position:fixed;inset:0;scrollbar-width:none;-ms-overflow-style:none}

@@ -21,7 +21,7 @@ await page.locator('.shoe-purchase button').click();
 await page.getByRole('heading',{name:'Swift Red',exact:true}).waitFor();
 assert.ok(await page.getByText('Sample item · WHT / UK 9').count());await page.keyboard.press('Escape');
 await page.getByRole('button',{name:'View Swift Red details'}).click();
-for(const name of ['Swift Grey','Swift Sand','Swift Navy','Swift Red']){await page.getByRole('button',{name:`Preview ${name}`}).click();assert.ok((await page.locator('#shoe-dialog-title').innerText()).includes(name))}
+await page.locator('.shoe-product-scroll').evaluate(el=>el.scrollTop=(el.scrollHeight-el.clientHeight)/2);await page.waitForTimeout(100);for(const name of ['Swift Grey','Swift Sand','Swift Navy','Swift Red']){await page.getByRole('button',{name:`Preview ${name}`}).click();assert.ok((await page.locator('#shoe-dialog-title').innerText()).includes(name))}
 await page.setViewportSize({width:390,height:844});
 for(const p of [.5,1]){await page.locator('.shoe-product-scroll').evaluate((el,progress)=>el.scrollTop=(el.scrollHeight-el.clientHeight)*progress,p);await page.waitForTimeout(100);await page.screenshot({path:`verification/product-mobile-${p}.png`});assert.equal(await page.locator('.shoe-product-scroll').evaluate(el=>el.scrollWidth<=el.clientWidth),true)}
 await page.getByRole('button',{name:/^all shoes$/i}).click();await page.waitForTimeout(100);assert.equal(await page.locator('.shoe-product-scroll').count(),0);

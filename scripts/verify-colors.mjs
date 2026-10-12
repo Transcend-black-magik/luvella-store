@@ -18,7 +18,7 @@ for(const color of ['Metal','Olive','Cobalt','Burgundy','Sand','Plum']){
 assert.equal(new Set(shots).size,6);
 await page.mouse.wheel(0,-1200);
 await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-0'));
-await page.getByRole('button',{name:'Show slide 2: Ilux raincoat'}).click();
+await page.getByRole('button',{name:'Show slide 2: Luvella raincoat'}).click();
 await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-1'));
 assert.equal(await page.locator('.raincoat-image').getAttribute('data-color'),'Plum');
 await page.emulateMedia({reducedMotion:'no-preference'});
@@ -28,7 +28,7 @@ await page.getByRole('button',{name:'Show slide 1: Winter protection'}).click();
 await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-0'));
 assert.equal(await page.locator('.persistent-header').evaluate(el=>el.getAnimations({subtree:true}).filter(a=>a.playState==='running').length),0);
 await page.setViewportSize({width:390,height:844});
-await page.getByRole('button',{name:'Show slide 2: Ilux raincoat'}).click();
+await page.getByRole('button',{name:'Show slide 2: Luvella raincoat'}).click();
 await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-1'));
 await page.getByRole('button',{name:'Choose Olive jacket'}).click();
 await page.waitForTimeout(1400);

@@ -9,14 +9,14 @@ assert.equal(await page.locator('.scroll-dots button').count(),2);
 for(const i of [0,1,0,1]){
  await page.evaluate(index=>window.scrollTo(0,index*innerHeight),i);
  await page.waitForFunction(index=>document.querySelector('.canvas').classList.contains(`slide-${index}`),i);
- assert.equal(await page.locator('.scroll-dots button[aria-current="step"]').getAttribute('aria-label'),['Show slide 1: Winter protection','Show slide 2: Ilux raincoat','Show slide 3: Arctic cream puffer','Show slide 4: Winter campaign'][i]);
+ assert.equal(await page.locator('.scroll-dots button[aria-current="step"]').getAttribute('aria-label'),['Show slide 1: Winter protection','Show slide 2: Luvella raincoat','Show slide 3: Arctic cream puffer','Show slide 4: Winter campaign'][i]);
  assert.deepEqual(await page.locator('.navigation').boundingBox(),nav);
  await page.screenshot({path:`verification/scroll-slide-${i+1}.png`});
 }
-await page.getByRole('button',{name:'Show slide 2: Ilux raincoat'}).click();
+await page.getByRole('button',{name:'Show slide 2: Luvella raincoat'}).click();
 await page.waitForFunction(()=>document.querySelector('.canvas').classList.contains('slide-1'));
 await page.getByRole('button',{name:'Explore this piece'}).click();
-await page.getByRole('heading',{name:'The ilux raincoat'}).waitFor();await page.keyboard.press('Escape');
+await page.getByRole('heading',{name:'The Luvella raincoat'}).waitFor();await page.keyboard.press('Escape');
 assert.equal(await page.locator('.next-section').count(),0);
 await page.setViewportSize({width:390,height:844});
 for(let i=0;i<2;i++){
