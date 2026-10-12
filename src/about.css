@@ -106,4 +106,30 @@ html.about-route{scroll-snap-type:y mandatory;scroll-padding-top:0}
 .about-visible .editorial-accent{animation:none}
 .about-visible .editorial-footnote{animation:about-full-left 1700ms cubic-bezier(.22,.61,.36,1) 1600ms both}
 @keyframes about-full-left{from{translate:calc(-100vw - 100%) 0;opacity:1}to{translate:0 0;opacity:1}}
+.about-visible .about-faces,.about-visible .about-editorial,.about-visible .faces-dark,.about-visible .faces-copy,.about-visible .editorial-copy{animation:none;translate:0 0}
+.about-visible .faces-dark>span{animation:about-full-left 1700ms ease-out both}
+.about-visible .faces-dark h2{animation:about-full-left 1900ms ease-out 250ms both}
+.about-visible .faces-dark small{animation:about-full-left 1700ms ease-out 450ms both}
+.about-visible .faces-photo{animation:about-full-left 2100ms ease-out 350ms both}
+.about-visible .faces-number{animation:about-full-left 1900ms ease-out 650ms both}
+.about-visible .faces-copy h3{animation:about-full-left 1900ms ease-out 850ms both}
+.about-visible .faces-copy p{animation:about-full-left 1900ms ease-out 1100ms both}
+.about-visible .faces-copy button{animation:about-full-left 1800ms ease-out 1350ms both}
+.about-visible .editorial-copy h2{animation:about-full-left 2000ms ease-out 300ms both}
+.about-visible .editorial-copy p{animation:about-full-left 1800ms ease-out 600ms both}
+.about-visible .editorial-copy p+p{animation-delay:850ms}
+.about-visible .editorial-portrait{animation:about-full-left 2200ms ease-out 650ms both}
+.about-visible .editorial-big-number{animation:about-full-left 2100ms ease-out 1000ms both}
+.about-visible .about-faces *{animation:none;translate:0 0}
+.about-visible .faces-dark{animation:faces-black-in 1900ms cubic-bezier(.22,.61,.36,1) both}
+.about-visible .faces-photo{animation:faces-panel-reveal 1900ms cubic-bezier(.22,.61,.36,1) both;overflow:hidden}
+.about-visible .faces-photo img{animation:faces-content-in 1900ms cubic-bezier(.22,.61,.36,1) both}
+.about-visible .faces-copy{animation:faces-white-reveal 1900ms cubic-bezier(.22,.61,.36,1) both}
+.about-visible .faces-copy>div,.about-visible .faces-number{animation:faces-content-in 1900ms cubic-bezier(.22,.61,.36,1) both}
+@keyframes faces-black-in{from{translate:-100% 0}to{translate:0 0}}
+@keyframes faces-panel-reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+@keyframes faces-white-reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 -30%)}}
+@keyframes faces-content-in{from{translate:-100% 0}to{translate:0 0}}
+.about-visible .about-faces .faces-dark>*,.about-visible .about-faces .faces-copy>div>*{animation:none;translate:0 0}
+@media(prefers-reduced-motion:reduce){.about-visible .about-faces *{animation:none!important;clip-path:none}}
 @media(max-width:760px){.about-shared-header nav{padding:0 8px;gap:10px}.about-shared-header nav a,.about-shared-header nav button{font-size:8px;letter-spacing:.2px}}
